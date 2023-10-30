@@ -1,14 +1,10 @@
 using Godot;
 using System;
 
-public partial class Player : Node2D
+public partial class Player : Actor
 {
-	[Export]
-	public int hp = 50;
-	[Export]
-	public int attack = 10;
-	[Export]
-	public int speed = 110;
+	
+	
 	Enemy enemy;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -19,10 +15,17 @@ public partial class Player : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	
 
-	public void _Attack(int dmg) {
+	public override void _Attack(int dmg) {
 		hp -= dmg;
 		GD.Print("Monster has attacked");
 		GD.Print("Current player hp: "+hp);
+		
+	}
+	public override void takeTurn (Actor target) {
+		if (Input.IsActionJustPressed("enemy_attack")){
+				target._Attack(attack);
+				queueOrder -= 200;
+		}
 	}
 
 	public bool IsAlive(){
