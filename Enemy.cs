@@ -7,6 +7,8 @@ public partial class Enemy : Node2D
 	public int hp = 50;
 	[Export]
 	public int attack = 10;
+	[Export]
+	public int speed = 100;
 	// Called when the node enters the scene tree for the first time.
 	Player player;
 	public override void _Ready()
