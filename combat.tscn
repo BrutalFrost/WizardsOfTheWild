@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpvghpfm1b4qh"]
+[gd_scene load_steps=10 format=3 uid="uid://cpvghpfm1b4qh"]
 
 [ext_resource type="Script" path="res://Combat.cs" id="1_7ufgh"]
 [ext_resource type="Script" path="res://Player.cs" id="2_fmntf"]
@@ -6,25 +6,69 @@
 [ext_resource type="Texture2D" uid="uid://dvarkq1a7nnyg" path="res://sprites/player.png" id="3_pmibl"]
 [ext_resource type="Texture2D" uid="uid://libpemgbhwln" path="res://sprites/enemy.png" id="5_yrpr2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_qrq8r"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5j33"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_piyso"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehl5m"]
+font_size = 41
+
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_7ufgh")
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(240, 340)
+position = Vector2(242, 342)
 scale = Vector2(0.16, 0.16)
 script = ExtResource("2_fmntf")
+speed = 40
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture = ExtResource("3_pmibl")
 metadata/_edit_group_ = true
 
+[node name="PlayerHp" type="Label" parent="Player"]
+offset_left = -156.25
+offset_top = 818.75
+offset_right = -86.25
+offset_bottom = 875.75
+scale = Vector2(8, 8)
+label_settings = SubResource("LabelSettings_qrq8r")
+
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(871, 348)
-scale = Vector2(0.165, 0.165)
+scale = Vector2(0.16, 0.16)
 script = ExtResource("3_d23u4")
+speed = 30
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("5_yrpr2")
 metadata/_edit_group_ = true
+
+[node name="EnemyHp" type="Label" parent="Enemy"]
+offset_left = -400.0
+offset_top = 660.606
+offset_right = -330.0
+offset_bottom = 717.606
+scale = Vector2(8, 8)
+label_settings = SubResource("LabelSettings_d5j33")
+
+[node name="pTurnOrderLabel" type="Label" parent="."]
+offset_left = 206.0
+offset_top = 187.0
+offset_right = 276.0
+offset_bottom = 244.0
+label_settings = SubResource("LabelSettings_piyso")
+
+[node name="eTurnOrderLabel" type="Label" parent="."]
+offset_left = 820.0
+offset_top = 199.0
+offset_right = 890.0
+offset_bottom = 256.0
+label_settings = SubResource("LabelSettings_ehl5m")

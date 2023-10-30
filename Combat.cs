@@ -12,6 +12,8 @@ public partial class Combat : Node2D
 	Player player;
 	List<Actor> turnQueue = new List<Actor>();
 	Actor currentCharacter;
+	Label pTurnOrderLabel;
+	Label eTurnOrderLabel;
 
 	public override void _Ready()
 	{
@@ -19,6 +21,8 @@ public partial class Combat : Node2D
 		player = GetNode<Player>("Player");
 		turnQueue.Add(enemy);
 		turnQueue.Add(player);
+		pTurnOrderLabel = GetNode<Label>("pTurnOrderLabel");
+		eTurnOrderLabel = GetNode<Label>("eTurnOrderLabel");
 
 	}
 
@@ -29,9 +33,16 @@ public partial class Combat : Node2D
 		currentCharacter = getNextCharacter();
 		if(currentCharacter is Player) {
 			currentCharacter.takeTurn(enemy);
+			
+			
 		} else if (currentCharacter is Enemy) {
 			currentCharacter.takeTurn(player);
+			
 		}
+		GD.Print("Enemy action gauge: "+ enemy.actionGauge);
+		GD.Print("Player action gauge: "+ player.actionGauge);
+		pTurnOrderLabel.Text = (player.actionValue).ToString();
+		eTurnOrderLabel.Text = (enemy.actionValue).ToString();
 
 		
 		
@@ -53,15 +64,17 @@ public partial class Combat : Node2D
 
 		while(true){
 			foreach(Actor actor in turnQueue) {
-				if(actor.queueOrder >= 200) {
+				if(actor.actionGauge <= 0) {
 					return actor;
 				}
 			}
 			
 			foreach(Actor actor in turnQueue) {
-				actor.queueOrder += actor.speed;
+				GD.Print(actor.actionGauge);
+				actor.actionGauge -= actor.speed;
+				actor.calculateAV();
 			}
-			turnQueue = turnQueue.OrderBy(o=>o.queueOrder).ToList();
+			turnQueue = turnQueue.OrderBy(o=>o.actionValue).ToList();
 			
 			
 		}

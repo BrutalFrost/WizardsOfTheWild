@@ -10,6 +10,11 @@ public partial class Player : Actor
 	public override void _Ready()
 	{
 		enemy = GetNode<Enemy>("Enemy");
+		actionValue = actionGauge/speed;
+		calculateAV();
+		labelHP = GetNode<Label>("PlayerHp");
+		displayHP();
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,15 +24,14 @@ public partial class Player : Actor
 		hp -= dmg;
 		GD.Print("Monster has attacked");
 		GD.Print("Current player hp: "+hp);
-		
+		displayHP();
 	}
 	public override void takeTurn (Actor target) {
 		if (Input.IsActionJustPressed("enemy_attack")){
 				target._Attack(attack);
-				queueOrder -= 200;
+				actionGauge = 10000;
 		}
 	}
-
 	public bool IsAlive(){
 		if(hp > 0){
 			return true;
