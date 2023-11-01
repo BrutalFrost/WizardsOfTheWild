@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cw1tkav7ibs4r"]
+
+[node name="Card" type="Node"]
+
+[node name="Art" type="Sprite2D" parent="."]
+
+[node name="Border" type="Sprite2D" parent="."]
