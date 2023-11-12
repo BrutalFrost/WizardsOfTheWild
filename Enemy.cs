@@ -30,12 +30,4 @@ public partial class Enemy : Actor
 		target._Attack(attack);
 		actionGauge = 10000;
 	}
-
-	public bool IsAlive(){
-		if(hp > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

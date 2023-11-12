@@ -31,12 +31,4 @@ public partial class Player : Actor
 				actionGauge = 10000;
 		}
 	}
-	// Check if actor is alive, to be moved to Actor.cs
-	public bool IsAlive(){
-		if(hp > 0){
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

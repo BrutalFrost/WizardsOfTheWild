@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class Actor : Node2D {
+public abstract partial class Actor : Node2D {
     [Export]
 	public int hp = 50;
 	[Export]
@@ -25,5 +25,12 @@ public partial class Actor : Node2D {
 	}
 	public void displayHP() {
 		labelHP.Text = "HP: " + hp.ToString();
+	}
+	public bool IsAlive(){
+		if(hp > 0){
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
