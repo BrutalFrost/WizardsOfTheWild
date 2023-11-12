@@ -6,15 +6,18 @@ public partial class Actor : Node2D {
 	[Export]
 	public int attack = 10;
 	[Export]
-	public int speed = 180;
-	public int actionGauge = 10000;
-	public int actionValue;
-    public int queueOrder = 0;
+	public int speed = 180; // How fast actionGauge lowers
+	public int actionGauge = 10000; // When actionGauge reaches 0 its that characters turn
+	public int actionValue; // Just a vaue to show to the player
+    public int queueOrder = 0; // Deprecated?
 	public Label labelHP;
 
+	// Placeholder method to take in a target actor and do their turn
     public virtual void takeTurn (Actor target) {
 		
 	}
+
+	// Missnamed get damaged method
 	public virtual void _Attack (int dmg) {
 	}
 	public void calculateAV () {

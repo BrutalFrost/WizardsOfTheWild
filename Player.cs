@@ -10,7 +10,6 @@ public partial class Player : Actor
 	public override void _Ready()
 	{
 		enemy = GetNode<Enemy>("Enemy");
-		actionValue = actionGauge/speed;
 		calculateAV();
 		labelHP = GetNode<Label>("PlayerHp");
 		displayHP();
@@ -32,6 +31,7 @@ public partial class Player : Actor
 				actionGauge = 10000;
 		}
 	}
+	// Check if actor is alive, to be moved to Actor.cs
 	public bool IsAlive(){
 		if(hp > 0){
 			return true;

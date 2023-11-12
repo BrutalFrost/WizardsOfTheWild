@@ -29,7 +29,7 @@ public partial class Combat : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
+		//---------Placeholder combat----------
 		currentCharacter = getNextCharacter();
 		if(currentCharacter is Player) {
 			currentCharacter.takeTurn(enemy);
@@ -39,36 +39,40 @@ public partial class Combat : Node2D
 			currentCharacter.takeTurn(player);
 			
 		}
-		GD.Print("Enemy action gauge: "+ enemy.actionGauge);
-		GD.Print("Player action gauge: "+ player.actionGauge);
-		pTurnOrderLabel.Text = (player.actionValue).ToString();
-		eTurnOrderLabel.Text = (enemy.actionValue).ToString();
+		//-------------------------------------
+
+		// Debugging print
+		GD.Print("Enemy action gauge: "+ enemy.actionGauge); 
+		GD.Print("Player action gauge: "+ player.actionGauge); 
+		// Updating the label for Action Value
+		pTurnOrderLabel.Text = player.actionValue.ToString();
+		eTurnOrderLabel.Text = enemy.actionValue.ToString();
 
 		
 		
-		
-		/*if(player.IsAlive() && enemy.IsAlive()){
-			if (Input.IsActionJustPressed("player_attack")){
-				player._Attack(enemy.attack);
-			}
+		// Check if player or enemy has died
+		// Needs rewrite 
+		if(player.IsAlive() && enemy.IsAlive()){
+			
 		}else if(!player.IsAlive()){
 			player.QueueFree();
 		}else if(!enemy.IsAlive()){
 			enemy.QueueFree();
 		}else{
 			GD.Print("How are you here?");
-		}*/
+		}
 	}
 
 	public Actor getNextCharacter () {
 
 		while(true){
+			// Checks if an Actor can take action
 			foreach(Actor actor in turnQueue) {
 				if(actor.actionGauge <= 0) {
 					return actor;
 				}
 			}
-			
+			// Advance all Actors
 			foreach(Actor actor in turnQueue) {
 				GD.Print(actor.actionGauge);
 				actor.actionGauge -= actor.speed;

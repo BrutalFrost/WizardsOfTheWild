@@ -25,7 +25,7 @@ script = ExtResource("1_7ufgh")
 position = Vector2(242, 342)
 scale = Vector2(0.16, 0.16)
 script = ExtResource("2_fmntf")
-speed = 40
+speed = 160
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -39,12 +39,13 @@ offset_right = -86.25
 offset_bottom = 875.75
 scale = Vector2(8, 8)
 label_settings = SubResource("LabelSettings_qrq8r")
+metadata/_edit_group_ = true
 
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(871, 348)
 scale = Vector2(0.16, 0.16)
 script = ExtResource("3_d23u4")
-speed = 30
+speed = 95
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
@@ -58,6 +59,7 @@ offset_right = -330.0
 offset_bottom = 717.606
 scale = Vector2(8, 8)
 label_settings = SubResource("LabelSettings_d5j33")
+metadata/_edit_group_ = true
 
 [node name="pTurnOrderLabel" type="Label" parent="."]
 offset_left = 206.0
