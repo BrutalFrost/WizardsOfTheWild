@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://libpemgbhwln"
-path="res://.godot/imported/enemy.png-03f80dfd1208a1b3024d79304d31759f.ctex"
+uid="uid://qg5affesmmei"
+path="res://.godot/imported/startButton2.png-92430c9df637957748b93bbc01ccec6c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemy.png"
-dest_files=["res://.godot/imported/enemy.png-03f80dfd1208a1b3024d79304d31759f.ctex"]
+source_file="res://startButton2.png"
+dest_files=["res://.godot/imported/startButton2.png-92430c9df637957748b93bbc01ccec6c.ctex"]
 
 [params]
 
