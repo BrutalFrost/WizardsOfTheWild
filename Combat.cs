@@ -85,25 +85,8 @@ public partial class Combat : Node2D
 		
 
 	}
+	private void _on_end_turn_button_pressed () {
+		currentCharacter.endTurn();
+	}
 
-
-	/*public void progressTurn() {
-		foreach (Actor character in turnQueue) {
-			if (character.queueOrder >= 200) {
-				character.queueOrder -= 200;
-				GD.Print("Debug queueOrder:"+ character.queueOrder);
-				if(character is Player) {
-					character.takeTurn(enemy);
-				} else if (character is Enemy){
-					character.takeTurn(player);
-				}
-				
-			}
-			Thread.Sleep(100);
-		}
-		foreach(Actor character in turnQueue) {
-			character.queueOrder += character.speed;
-		}
-		turnQueue = turnQueue.OrderBy(o=>o.queueOrder).ToList();
-	}*/
 }

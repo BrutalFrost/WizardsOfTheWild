@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpvghpfm1b4qh"]
+[gd_scene load_steps=14 format=3 uid="uid://cpvghpfm1b4qh"]
 
 [ext_resource type="Script" path="res://Combat.cs" id="1_7ufgh"]
+[ext_resource type="Texture2D" uid="uid://clwk8vjvk4fpx" path="res://sprites/backgrounds/backgroundWinter.png" id="2_7gq2c"]
 [ext_resource type="Script" path="res://Player.cs" id="2_fmntf"]
 [ext_resource type="Script" path="res://Enemy.cs" id="3_d23u4"]
-[ext_resource type="Texture2D" uid="uid://dvarkq1a7nnyg" path="res://sprites/player.png" id="3_pmibl"]
-[ext_resource type="Texture2D" uid="uid://libpemgbhwln" path="res://sprites/enemy.png" id="5_yrpr2"]
+[ext_resource type="Texture2D" uid="uid://dvarkq1a7nnyg" path="res://sprites/characters/player.png" id="4_hhlj8"]
+[ext_resource type="Texture2D" uid="uid://libpemgbhwln" path="res://sprites/characters/enemy.png" id="6_d0hqb"]
+[ext_resource type="Texture2D" uid="uid://qg5affesmmei" path="res://startButton2.png" id="6_u30wt"]
+[ext_resource type="Texture2D" uid="uid://gca4oi3v4iwk" path="res://startButton3.png" id="7_pch20"]
+[ext_resource type="Script" path="res://endTurnButton.cs" id="8_82gts"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qrq8r"]
 font_size = 41
@@ -21,15 +25,20 @@ font_size = 41
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_7ufgh")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1151.0
+offset_bottom = 651.0
+texture = ExtResource("2_7gq2c")
+
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(242, 342)
+position = Vector2(228, 433)
 scale = Vector2(0.16, 0.16)
 script = ExtResource("2_fmntf")
 speed = 160
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_pmibl")
+texture = ExtResource("4_hhlj8")
 metadata/_edit_group_ = true
 
 [node name="PlayerHp" type="Label" parent="Player"]
@@ -42,14 +51,14 @@ label_settings = SubResource("LabelSettings_qrq8r")
 metadata/_edit_group_ = true
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(871, 348)
+position = Vector2(959, 433)
 scale = Vector2(0.16, 0.16)
 script = ExtResource("3_d23u4")
 speed = 95
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-texture = ExtResource("5_yrpr2")
+texture = ExtResource("6_d0hqb")
 metadata/_edit_group_ = true
 
 [node name="EnemyHp" type="Label" parent="Enemy"]
@@ -62,15 +71,26 @@ label_settings = SubResource("LabelSettings_d5j33")
 metadata/_edit_group_ = true
 
 [node name="pTurnOrderLabel" type="Label" parent="."]
-offset_left = 206.0
-offset_top = 187.0
-offset_right = 276.0
-offset_bottom = 244.0
+offset_left = 207.0
+offset_top = 260.0
+offset_right = 277.0
+offset_bottom = 317.0
 label_settings = SubResource("LabelSettings_piyso")
 
 [node name="eTurnOrderLabel" type="Label" parent="."]
-offset_left = 820.0
-offset_top = 199.0
-offset_right = 890.0
-offset_bottom = 256.0
+offset_left = 902.0
+offset_top = 310.0
+offset_right = 972.0
+offset_bottom = 367.0
 label_settings = SubResource("LabelSettings_ehl5m")
+
+[node name="endTurnButton" type="TextureButton" parent="."]
+offset_left = 1001.0
+offset_top = 527.0
+offset_right = 1097.0
+offset_bottom = 567.0
+texture_normal = ExtResource("6_u30wt")
+texture_pressed = ExtResource("7_pch20")
+script = ExtResource("8_82gts")
+
+[connection signal="pressed" from="endTurnButton" to="." method="_on_end_turn_button_pressed"]

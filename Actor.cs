@@ -33,4 +33,7 @@ public abstract partial class Actor : Node2D {
 			return false;
 		}
 	}
+	public virtual void endTurn(){
+
+	}
 }
