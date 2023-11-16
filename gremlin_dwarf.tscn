@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw7r8hr64pjw3"]
+
+[ext_resource type="Script" path="res://GremlinDwarf.cs" id="1_klniu"]
+[ext_resource type="Texture2D" uid="uid://libpemgbhwln" path="res://sprites/characters/enemy.png" id="2_tlkbi"]
+
+[node name="GremlinDwarf" type="Node2D"]
+position = Vector2(959, 433)
+script = ExtResource("1_klniu")
+speed = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 6)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_tlkbi")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://2ba3617abihl"]
+
+[ext_resource type="Script" path="res://smoll.cs" id="1_awms4"]
+[ext_resource type="Texture2D" uid="uid://ddxtpo0c544wa" path="res://sprites/characters/smol.png" id="2_lbdpg"]
+
+[node name="smoll" type="Node2D"]
+script = ExtResource("1_awms4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(938, 391)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_lbdpg")
+flip_h = true
