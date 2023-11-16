@@ -12,17 +12,42 @@ public partial class Combat : Node2D
 	Player player;
 	List<Actor> turnQueue = new List<Actor>();
 	Actor currentCharacter;
+	// Labels in the ui
 	Label pTurnOrderLabel;
 	Label eTurnOrderLabel;
+	Label playerHpLabel;
+	Label enemyHpLabel;
+	//------------------------------
 
+	// Loading scenes to use as actors, to be reworked
+	PackedScene enemyScene = (PackedScene)ResourceLoader.Load("res://gremlin_dwarf.tscn");
+	PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://player.tscn");
+
+	// Launches when scene is called
 	public override void _Ready()
 	{
-		enemy = GetNode<Enemy>("Enemy");
-		player = GetNode<Player>("Player");
+		// Placeholder spawning of enemies and the player
+		Node enemyS = enemyScene.Instantiate();
+		AddChild(enemyS);
+		Node playerS = playerScene.Instantiate();
+		AddChild(playerS);
+		enemy = (Enemy)enemyS;
+		player = (Player)playerS;	
+		//-----------------------------------------------
+
+		//enemy = GetNode<Enemy>("Enemy");
+		//player = new enemyS();
 		turnQueue.Add(enemy);
 		turnQueue.Add(player);
 		pTurnOrderLabel = GetNode<Label>("pTurnOrderLabel");
 		eTurnOrderLabel = GetNode<Label>("eTurnOrderLabel");
+		
+		
+		playerHpLabel = GetNode<Label>("PlayerHp");
+	
+		enemyHpLabel = GetNode<Label>("EnemyHp");
+		
+		DisplayHP();
 
 	}
 
@@ -30,20 +55,21 @@ public partial class Combat : Node2D
 	public override void _Process(double delta)
 	{
 		//---------Placeholder combat----------
-		currentCharacter = getNextCharacter();
+		currentCharacter = GetNextCharacter();
 		if(currentCharacter is Player) {
-			currentCharacter.takeTurn(enemy);
+			currentCharacter.TakeTurn(enemy);
 			
 			
 		} else if (currentCharacter is Enemy) {
-			currentCharacter.takeTurn(player);
+			currentCharacter.TakeTurn(player);
 			
 		}
 		//-------------------------------------
-
+		DisplayHP(); // Updates health labels in ui
 		// Debugging print
 		GD.Print("Enemy action gauge: "+ enemy.actionGauge); 
 		GD.Print("Player action gauge: "+ player.actionGauge); 
+		GD.Print("Test AV: " + player.actionValue);
 		// Updating the label for Action Value
 		pTurnOrderLabel.Text = player.actionValue.ToString();
 		eTurnOrderLabel.Text = enemy.actionValue.ToString();
@@ -63,7 +89,7 @@ public partial class Combat : Node2D
 		}
 	}
 
-	public Actor getNextCharacter () {
+	public Actor GetNextCharacter () {
 
 		while(true){
 			// Checks if an Actor can take action
@@ -74,7 +100,6 @@ public partial class Combat : Node2D
 			}
 			// Advance all Actors
 			foreach(Actor actor in turnQueue) {
-				GD.Print(actor.actionGauge);
 				actor.actionGauge -= actor.speed;
 				actor.calculateAV();
 			}
@@ -85,7 +110,14 @@ public partial class Combat : Node2D
 		
 
 	}
-	private void _on_end_turn_button_pressed () {
+
+	// Method to update text labels for hp
+	public void DisplayHP() {
+		playerHpLabel.Text = "HP: " + player.hp.ToString();
+		enemyHpLabel.Text = "HP: " + enemy.hp.ToString();
+	}
+	// Event listener to check if end turn button is pressed
+	private void OnEndTurnButtonPressed () {
 		currentCharacter.endTurn();
 	}
 
