@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://x574qkrho30p"]
 
-[ext_resource type="Script" path="res://Hand.cs" id="1_qdaww"]
+[ext_resource type="Script" path="res://Cards/Hand.cs" id="1_h7xxs"]
 
 [node name="Hand" type="MarginContainer"]
 anchors_preset = 8
@@ -14,4 +14,4 @@ offset_right = 283.0
 offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qdaww")
+script = ExtResource("1_h7xxs")
