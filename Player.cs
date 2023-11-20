@@ -4,10 +4,14 @@ using System;
 public partial class Player : Actor
 {
 	public int fireAmount = 0; 
+	Hand hand;
+	PackedScene handScene = (PackedScene)ResourceLoader.Load("res://hand.tscn");
 	Actor enemy;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Node handS = handScene.Instantiate();
+		hand = (Hand)handS;
 		calculateAV();
 		
 		

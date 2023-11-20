@@ -2,12 +2,11 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Hand : Node2D
+public partial class Hand : Combat
 {
 	[Export]
 	int startingHandSize = 5;
-	Player player; 
-	Enemy enemy;
+	
 	List<CardBase> deck = new List<CardBase>();
 	List<CardBase> hand = new List<CardBase>();  
 	
