@@ -6,10 +6,10 @@
 [node name="Card" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 510.0
-offset_top = 520.0
-offset_right = 550.0
-offset_bottom = 560.0
+offset_left = 57.0
+offset_top = 55.0
+offset_right = 97.0
+offset_bottom = 95.0
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_187ka")
 metadata/_edit_group_ = true
@@ -34,7 +34,7 @@ offset_left = -74.0002
 offset_top = 16.8571
 offset_right = -34.0002
 offset_bottom = 42.8571
-text = "2"
+text = "0"
 
 [node name="WaterCost" type="Label" parent="."]
 layout_mode = 0
@@ -42,7 +42,7 @@ offset_left = -74.0002
 offset_top = -14.5715
 offset_right = -34.0002
 offset_bottom = 11.4285
-text = "2"
+text = "0"
 
 [node name="FireCost" type="Label" parent="."]
 layout_mode = 0
@@ -50,7 +50,7 @@ offset_left = -74.0002
 offset_top = -50.2858
 offset_right = -34.0002
 offset_bottom = -24.2858
-text = "2"
+text = "0"
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 1

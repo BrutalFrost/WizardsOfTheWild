@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class CardBase : Control
 {
@@ -12,11 +13,6 @@ public partial class CardBase : Control
         CardName = cardName;
         Description = description;
     }
-
-   
-
-
-	
 
     public virtual void Effect()
     {

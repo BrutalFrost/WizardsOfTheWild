@@ -17,6 +17,7 @@ public partial class Combat : Node2D
 	Label eTurnOrderLabel;
 	Label playerHpLabel;
 	Label enemyHpLabel;
+	Label fireAmountLabel;
 	//------------------------------
 
 	// Loading scenes to use as actors, to be reworked
@@ -26,6 +27,7 @@ public partial class Combat : Node2D
 	// Launches when scene is called
 	public override void _Ready()
 	{
+		
 		// Placeholder spawning of enemies and the player
 		Node enemyS = enemyScene.Instantiate();
 		AddChild(enemyS);
@@ -44,10 +46,12 @@ public partial class Combat : Node2D
 		
 		
 		playerHpLabel = GetNode<Label>("PlayerHp");
+		fireAmountLabel = GetNode<Label>("FireAmount");
 	
 		enemyHpLabel = GetNode<Label>("EnemyHp");
-		
+		DisplayResource();
 		DisplayHP();
+		
 
 	}
 
@@ -67,9 +71,9 @@ public partial class Combat : Node2D
 		//-------------------------------------
 		DisplayHP(); // Updates health labels in ui
 		// Debugging print
-		GD.Print("Enemy action gauge: "+ enemy.actionGauge); 
+		/*GD.Print("Enemy action gauge: "+ enemy.actionGauge); 
 		GD.Print("Player action gauge: "+ player.actionGauge); 
-		GD.Print("Test AV: " + player.actionValue);
+		GD.Print("Test AV: " + player.actionValue);*/
 		// Updating the label for Action Value
 		pTurnOrderLabel.Text = player.actionValue.ToString();
 		eTurnOrderLabel.Text = enemy.actionValue.ToString();
@@ -119,6 +123,11 @@ public partial class Combat : Node2D
 	// Event listener to check if end turn button is pressed
 	private void OnEndTurnButtonPressed () {
 		currentCharacter.endTurn();
+	}
+
+	public void DisplayResource()
+	{
+		fireAmountLabel.Text = player.fireAmount.ToString();
 	}
 
 }

@@ -3,8 +3,7 @@ using System;
 
 public partial class Player : Actor
 {
-	
-	
+	public int fireAmount = 0; 
 	Actor enemy;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -32,6 +31,7 @@ public partial class Player : Actor
 
 	// Executes everything that happens at the end of a players turn then ends that turn
 	public override void endTurn () {
+		
 		enemy._Attack(attack);
 		actionGauge = 10000;
 	}
