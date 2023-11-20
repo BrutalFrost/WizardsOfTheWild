@@ -2,19 +2,24 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class CardBase : Control
+public abstract partial class CardBase : Node2D
 {
 
-    public string CardName {get; set;}
-    public string Description {get; set;}
+    [Export]
+    public virtual string CardName {get; set;}
+    [Export]
+    public virtual string Description {get; set;}
 
-    public CardBase (string cardName, string description)
+    public override void _Ready() {
+
+    }
+    /*public CardBase (string cardName, string description)
     {
         CardName = cardName;
         Description = description;
-    }
+    }*/
 
-    public virtual void Effect()
+    public virtual void Effect(Actor target)
     {
     
     }

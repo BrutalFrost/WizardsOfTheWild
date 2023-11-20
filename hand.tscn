@@ -1,17 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://x574qkrho30p"]
+[gd_scene load_steps=2 format=3 uid="uid://c5rldblh03avj"]
 
-[ext_resource type="Script" path="res://Cards/Hand.cs" id="1_h7xxs"]
+[ext_resource type="Script" path="res://Hand.cs" id="1_y3hc8"]
 
-[node name="Hand" type="MarginContainer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -302.0
-offset_top = 128.0
-offset_right = 283.0
-offset_bottom = 325.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_h7xxs")
+[node name="Hand" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_y3hc8")

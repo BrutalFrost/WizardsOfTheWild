@@ -2,13 +2,12 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Hand : Combat
+public partial class Hand : Node2D
 {
 	[Export]
 	int startingHandSize = 5;
-	
-	List<CardBase> deck = new List<CardBase>();
-	List<CardBase> hand = new List<CardBase>();  
+	public List<CardBase> hand = new List<CardBase>(); 
+	List<CardBase> localDeck = new List<CardBase>(); 
 	
 
 
@@ -19,72 +18,32 @@ public partial class Hand : Combat
 
 	public override void _Ready()
 	{
-		PackedScene cardScene = (PackedScene)ResourceLoader.Load("res://card.tscn");
-		player = GetNode<Player>("res://player.tscn");
-		enemy = GetNode<Enemy>("res://enemy.tscn");
-		Node cardS = cardScene.Instantiate(); 
+		PackedScene testCardScene = (PackedScene)ResourceLoader.Load("res://Cards/fire_spender.tscn");
+		Node cardS = testCardScene.Instantiate(); 
 		AddChild(cardS);
-		deck.Add(new FireSpender(2,20,"Fire Ball", "Deals 20 fire damge"));
-		deck.Add(new FireSpender(2,20,"Fire Ball", "Deals 20 fire damge"));
-		deck.Add(new FireGenerator("Fire gem", "Grants 2 fire energy", 2));
-		deck.Add(new FireGenerator("Fire gem", "Grants 2 fire energy", 2));
-		CardDraw();
+
 
 	}
-
-	public override void _Process(double delta)
-	{
-		if(Input.IsActionJustPressed("1"))
-		{
-
-			hand[0].Effect();
-
-		}
-		if (Input.IsActionJustPressed("2"))
-		{
-
-			hand[1].Effect();
-
-		}
-		if (Input.IsActionJustPressed("3"))
-		{
-
-			hand[2].Effect();
-
-		}
-		if (Input.IsActionJustPressed("4"))
-		{
-
-			hand[3].Effect();
-
-		}
-		if (Input.IsActionJustPressed("5"))
-		{
-
-			hand[4].Effect();
-
-		}
+	public void setDeck(List<CardBase> deck) {
+		localDeck = deck;
 	}
-
-
-
-
 	public void CardDraw()
 	{
 		Random random = new Random();
-
-		for (int i = 0; i < startingHandSize; i++)
+		GD.Print("Im DRAWING");
+		for (int i = 0; i < 2; i++)
 		{
-			if (deck.Count > 0)
+			if (localDeck.Count > 0)
 			{
-				int randomIndex = random.Next(0, deck.Count);
+				int randomIndex = random.Next(0, localDeck.Count);
 
-				CardBase drawnCard = deck[randomIndex];
+				CardBase drawnCard = localDeck[randomIndex];
 				hand.Add(drawnCard);
 
 				GD.Print(drawnCard.CardName);
 			}
 		}
+		GD.Print("hand 1" + hand[0].CardName);
 
 	}
 }

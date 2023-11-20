@@ -23,7 +23,7 @@ public partial class Combat : Node2D
 	// Loading scenes to use as actors, to be reworked
 	PackedScene enemyScene = (PackedScene)ResourceLoader.Load("res://gremlin_dwarf.tscn");
 	PackedScene playerScene = (PackedScene)ResourceLoader.Load("res://player.tscn");
-
+	
 	// Launches when scene is called
 	public override void _Ready()
 	{
@@ -49,7 +49,7 @@ public partial class Combat : Node2D
 		fireAmountLabel = GetNode<Label>("FireAmount");
 	
 		enemyHpLabel = GetNode<Label>("EnemyHp");
-		DisplayResource();
+		//DisplayResource();
 		DisplayHP();
 		
 
@@ -125,9 +125,9 @@ public partial class Combat : Node2D
 		currentCharacter.endTurn();
 	}
 
-	public void DisplayResource()
+	/*public void DisplayResource()
 	{
 		fireAmountLabel.Text = player.fireAmount.ToString();
-	}
+	}*/
 
 }

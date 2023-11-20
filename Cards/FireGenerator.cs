@@ -5,14 +5,14 @@ public partial class FireGenerator : CardBase
 {
     
     public int FireGeneration {get; set;}
-    public FireGenerator(string name, string description, int fireGeneration) : base(name, description)
+    /*public FireGenerator(string name, string description, int fireGeneration) : base(name, description)
     {
         FireGeneration = fireGeneration;
         
 
-    }
+    }*/
 
-    public override void Effect()
+    public override void Effect(Actor target)
     {
         GD.Print("Fire Amount Increased by: " + FireGeneration);
         //player.fireAmount += FireGeneration; 

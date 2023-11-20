@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://wmd3b146qq6k"]
+
+[ext_resource type="Script" path="res://Cards/FireSpender.cs" id="1_q0g50"]
+[ext_resource type="Texture2D" uid="uid://ducc6uqfmy76" path="res://sprites/Card.png" id="2_w8cm1"]
+
+[node name="FireSpender" type="Node2D"]
+script = ExtResource("1_q0g50")
+CardName = "TestName"
+Description = "TestDisc"
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 319)
+texture = ExtResource("2_w8cm1")
+
+[node name="Name" type="Label" parent="."]
+offset_left = 543.857
+offset_top = 383.0
+offset_right = 590.857
+offset_bottom = 409.0
+text = "Name
+"
+horizontal_alignment = 1
+
+[node name="EarthCost" type="Label" parent="."]
+offset_left = 471.0
+offset_top = 470.143
+offset_right = 511.0
+offset_bottom = 496.143
+text = "2"
+
+[node name="WaterCost" type="Label" parent="."]
+offset_left = 471.0
+offset_top = 438.714
+offset_right = 511.0
+offset_bottom = 464.714
+text = "2"
+
+[node name="FireCost" type="Label" parent="."]
+offset_left = 471.0
+offset_top = 403.0
+offset_right = 511.0
+offset_bottom = 429.0
+text = "2"
+
+[node name="Description" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.325
+anchor_bottom = 0.325
+offset_left = 520.714
+offset_top = 528.857
+offset_right = 609.714
+offset_bottom = 554.857
+text = "Description"
